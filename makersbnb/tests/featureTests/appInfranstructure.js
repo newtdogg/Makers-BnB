@@ -24,7 +24,7 @@ var assert = require('assert');
       });
 
       it('should see express', function() {
-        assert.equal(this.browser.assert.text('h1'), 'Express');
+        assert.equal(this.browser.text('h1'), 'Express');
       });
 
     });
