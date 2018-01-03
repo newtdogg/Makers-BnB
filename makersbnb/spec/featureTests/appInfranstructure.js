@@ -4,8 +4,6 @@ var app = require('../../app');
 var Browser = require('zombie');
 var assert = require('assert');
 var models = require('../../models')
-var DatabaseCleaner = require('database-cleaner')
-var databaseCleaner = new DatabaseCleaner('Postgres');
 
   describe('home page', function() {
     // databaseCleaner.clean('airbnb_test');
