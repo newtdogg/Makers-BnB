@@ -23,27 +23,49 @@
       </div>
     </div>
   </nav>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <form method="post" action="/listing/new" id="PropertyForm">
-      <label for="Location:">Location: </label>
-      <input id="loco" type='text' label="Location:" name='location' placeholder="London">
-      <br>
-      <label for="Price/Night:">Price/Night: </label>
-      <input id="price" type='text' label="Price/Night:" name='price' placeholder="£80">
-      <br>
-      <label for="Guests:">Guests: </label>
-      <input id="guests" type='text' label="Guests:" name='guests' placeholder="2">
-      <br>
-      <input type="submit" name="Submit">
-    </form>
-    <br>
-    <ul id="list">
+
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
+        <div class="row">
+          <div id="section1" class="container-fluid" >
+            <div class="welcomemessage" >
+              <h1>Welcome to EZ.sleep</h1><br>
+            </div>
+            <div class="welcomecomment">
+              <h5>A website to make travelling abroad stress free. Choose from hundreds of locations worldwide, from bustling cities of America to the peace countryside of Italy</h5>
+            </div>
+          </div>
+          <div id="section2" class="container-fluid">
+            <h1><%= title %></h1>
+            <p>Welcome to <%= title %></p>
+            <form method="post" action="/listing/new" id="PropertyForm">
+              <label for="Location:">Location: </label>
+              <input id="loco" type='text' label="Location:" name='location' placeholder="London">
+              <br>
+              <label for="Price/Night:">Price/Night: </label>
+              <input id="price" type='text' label="Price/Night:" name='price' placeholder="£80">
+              <br>
+              <label for="Guests:">Guests: </label>
+              <input id="guests" type='text' label="Guests:" name='guests' placeholder="2">
+              <br>
+              <input type="submit" name="Submit">
+            </form>
+          </div>
+          <div id="section2" class="container-fluid">    <ul id="list">
       <% listings.forEach(function(listing) { %>
         <li>
           <p> <%= 'Location - ' + listing.location + ' |' + ' Price/Night - £' + listing.price + ' |' + ' Guests - ' + listing.maxPeople %> </p>
         </li>
         <br>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
       <% }) %>
     </ul>
   </body>
