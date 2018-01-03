@@ -10,7 +10,10 @@
   "test": {
     "database": "airbnb_test",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "define": {
+      "timestamps": false
+    }
   },
   "production": {
     "database": "airbnb_production",

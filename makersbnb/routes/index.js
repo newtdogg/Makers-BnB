@@ -4,8 +4,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  models.Listing.create({location: "London", price: 66.1, maxPeople: 3})
-  res.render('index', { title: 'Express' });
+  // models.Listing.create({location: "London", price: 66.1, maxPeople: 3})
+  res.render('index', { title: 'JTLN' });
 });
 
 module.exports = router;

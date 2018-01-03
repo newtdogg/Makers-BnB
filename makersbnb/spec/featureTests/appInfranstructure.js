@@ -23,8 +23,8 @@ var assert = require('assert');
         assert.ok(this.browser.success);
       });
 
-      it('should see express', function() {
-        assert.equal(this.browser.text('h1'), 'Express');
+      it('should have a form to fill in with details', function() {
+        assert.equal(this.browser.text('form label'), 'Location: Price/Night: Guests:');
       });
 
     });
