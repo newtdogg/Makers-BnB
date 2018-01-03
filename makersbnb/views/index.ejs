@@ -7,15 +7,26 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <form id="PropertyForm">
+    <form method="post" action="/listing/new" id="PropertyForm">
       <label for="Location:">Location: </label>
-      <input type='text' label="Location:" name='Location:' placeholder="London">
+      <input id="loco" type='text' label="Location:" name='location' placeholder="London">
       <br>
       <label for="Price/Night:">Price/Night: </label>
-      <input type='text' label="Price/Night:" name='Price/Night:' placeholder="£80">
+      <input id="price" type='text' label="Price/Night:" name='price' placeholder="£80">
       <br>
       <label for="Guests:">Guests: </label>
-      <input type='text' label="Guests:" name='Guests:' placeholder="2">
+      <input id="guests" type='text' label="Guests:" name='guests' placeholder="2">
+      <br>
+      <input type="submit" name="Submit">
     </form>
+    <br>
+    <ul id="list">
+      <% listings.forEach(function(listing) { %>
+        <li>
+          <p> <%= 'Location - ' + listing.location + ' |' + ' Price/Night - £' + listing.price + ' |' + ' Guests - ' + listing.maxPeople %> </p>
+        </li>
+        <br>
+      <% }) %>
+    </ul>
   </body>
 </html>

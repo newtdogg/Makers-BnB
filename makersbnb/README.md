@@ -30,3 +30,6 @@ I would like to book a listing
 
 Used for migrating into test database
 node_modules/.bin/sequelize db:migrate --url 'postgres://127.0.0.1/airbnb_test'
+
+browser.fill('#id01', 'London')
+browser.fill('input[name="Price/Night:"]', '£40.00')
