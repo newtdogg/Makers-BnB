@@ -1,8 +1,49 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+  border-width: 0px;
 }
 
-a {
-  color: #00B7FF;
+.navbar {
+  height: 100px;
+  padding-top: 25px;
+  color: white;
+  background-color: #40e0d0;
+  border-width: 0px;
 }
+
+.hometitle{
+  font-weight: bold;
+  color: white;
+}
+
+.welcomecomment {
+  color: #565656;
+}
+.welcomemessage {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-weight: bold;
+  color: #565656;
+}
+
+body {
+      position: relative;
+  }
+  #section1 {
+    padding-top:50px;
+    height:270px;
+    color: navy;
+    background-color: white;
+   }
+  #section2 {
+    padding-top:50px;
+    height:auto;
+    color: navy;
+    background-color: ededed;
+  }
+  #section3 {
+    padding-top:50px;
+    height:500px;
+    color: #fff;
+    background-color: white;
+  }
