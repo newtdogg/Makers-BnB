@@ -53,7 +53,6 @@ var models = require('../../models')
         browser.fill('#email', 'cool_dad@yahoo.com')
         browser.fill('#password', '123456')
         browser.fill('#password_confirmation', '123456')
-        browser.pressButton('Submit')
       }
 
       before(function(done) {
@@ -61,10 +60,15 @@ var models = require('../../models')
         browser.visit('/signup', done);
       })
 
-      it('a user can submit information to sign up', function(){
+      it('a user can submit information to sign up', function(done){
         signUpForm()
-        models.User.findAll().then(function(items){
-          assert.equal(items.pop().username, 'cool_dad')
+        browser.pressButton('Submit', function(){
+          models.User.findAll().then(function(items){
+            // console.log(items)
+            assert.equal(items.pop().username, 'cool_dad')
+            done();
+        });
+
         })
       })
     })
