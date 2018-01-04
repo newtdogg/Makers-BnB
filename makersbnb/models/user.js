@@ -5,13 +5,7 @@ module.exports = function(sequelize, DataTypes){
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate: {
-      //     is: /^[a-z\d\-\s]+$/i {
-      //       throw new Error "Name may only contain letters and hyphens"
-      //     }
-      //   }
     },
-    // }
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,7 +21,6 @@ module.exports = function(sequelize, DataTypes){
       unique: true,
       validate: {
         isEmail: {
-          // throw new Error "That doesn't look like an email address"
         }
       }
     }
