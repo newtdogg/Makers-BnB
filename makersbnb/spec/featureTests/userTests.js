@@ -35,7 +35,20 @@ describe('userSignUp', function(done) {
 
   it('a user can submit information to sign up', function(){
     console.log(browser.url)
-    browser.visit('/signup').then(function(){
+    return browser.visit('/signup').then(function(){
+        console.log(browser.url)
+        signUpForm()
+        browser.pressButton('Submit').then(function(){
+        models.User.findAll().then(function(items){
+          assert.equal(items.pop().username, 'cool_dad')
+        })
+      })
+    })
+  })
+
+  it('a user can submit information to sign up', function(){
+    console.log(browser.url)
+    return browser.visit('/signup').then(function(){
       console.log(browser.url)
       signUpForm()
       return browser.pressButton('Submit').then(function(){
