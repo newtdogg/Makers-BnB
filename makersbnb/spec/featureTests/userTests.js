@@ -25,7 +25,7 @@ describe('userSignUp', function(done) {
   });
 
   it('a user can submit information to sign up', function(){
-    signUpForm()
+    signUpForm('james', 'cool_dad', '123@456.com', '12345', '12345')
     return browser.pressButton('Submit').then(function(){
       models.User.findAll().then(function(items){
         assert.equal(items.pop().username, 'cool_dad')
@@ -33,27 +33,23 @@ describe('userSignUp', function(done) {
     })
   })
 
-  it('a user can submit information to sign up', function(){
-    console.log(browser.url)
-    return browser.visit('/signup').then(function(){
-        console.log(browser.url)
-        signUpForm()
-        browser.pressButton('Submit').then(function(){
+  it('a user cannot sign up with an invalid password', function(){
+      return browser.visit('/signup').then(function(){
+      signUpForm('dave', 'cool_dave', 'cooldave@456.com', '12345', '54321')
+       browser.pressButton('Submit').then(function(){
         models.User.findAll().then(function(items){
-          assert.equal(items.pop().username, 'cool_dad')
+          assert.equal(items.length, 1)
         })
       })
     })
   })
 
-  it('a user can submit information to sign up', function(){
-    console.log(browser.url)
-    return browser.visit('/signup').then(function(){
-      console.log(browser.url)
-      signUpForm()
-      return browser.pressButton('Submit').then(function(){
+  it('a user cannot signup with a previously used email address', function(){
+      return browser.visit('/signup').then(function(){
+      signUpForm('ted', 'cool_ted', '123@456.com', '12345', '12345')
+      browser.pressButton('Submit').then(function(){
         models.User.findAll().then(function(items){
-          assert.equal(items.pop().username, 'cool_dad')
+          assert.equal(items.length, 1)
         })
       })
     })
