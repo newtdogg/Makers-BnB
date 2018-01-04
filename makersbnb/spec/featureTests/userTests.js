@@ -8,12 +8,12 @@ var bcrypt = require('bcrypt');
 
 describe('userSignUp', function(done) {
 
-  function signUpForm() {
-    browser.fill('#name', 'Trevor')
-    browser.fill('#username', 'cool_dad')
-    browser.fill('#email', 'cool_dad@yahoo.com')
-    browser.fill('#password', '123456')
-    browser.fill('#password_confirmation', '123456')
+  function signUpForm(name, username, email, password, confirm) {
+    browser.fill('#name', name)
+    browser.fill('#username', username)
+    browser.fill('#email', email)
+    browser.fill('#password', password)
+    browser.fill('#password_confirmation', confirm)
   }
 
   before(function(done) {
@@ -38,11 +38,10 @@ describe('userSignUp', function(done) {
     return browser.visit('/signup').then(function(){
       signUpForm('admin', 'admin', 'admin@admin.com', 'admin', 'admin');
       browser.pressButton('Submit').then(function(){
+        // Below does not work when using findOne???
         models.User.findAll().then(function(users){
-          console.log(users)
-          var user = users.pop();
+          user = users.pop();
           bcrypt.compare("admin", user.password, function(err, res){
-            console.log(err)
             assert.equal(res, true);
           })
         })
