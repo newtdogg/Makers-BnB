@@ -2,9 +2,9 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="50" style="margin-top:100px;margin-left:0;margin-right:0;">
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -38,8 +38,21 @@
             </div>
           </div>
           <div id="section2" class="container-fluid">
-            <h1><%= title %></h1>
-            <p>Welcome to <%= title %></p>
+            <div class="row">
+            <h1>Listings</h1>
+            <% listings.forEach(function(listing) { %>
+              <div class="col-sm-6 listings">
+                <ul>
+                  <li> <h4><%= " Location - " + listing.location %></li></h4>
+                  <li> <h4><%= " Price/Night - £" + listing.price %></li></h4>
+                  <li> <h4><%= " Guests - " + listing.maxPeople %></li></h4>
+                </ul>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+          <div id="section3" class="container-fluid">
+            <h1>Become a host</h1>
             <form method="post" action="/listing/new" id="PropertyForm">
               <label for="Location:">Location: </label>
               <input id="loco" type='text' label="Location:" name='location' placeholder="London">
@@ -50,23 +63,16 @@
               <label for="Guests:">Guests: </label>
               <input id="guests" type='text' label="Guests:" name='guests' placeholder="2">
               <br>
+
               <input type="submit" name="Submit">
             </form>
+
           </div>
-          <div id="section2" class="container-fluid">    <ul id="list">
-      <% listings.forEach(function(listing) { %>
-        <li>
-          <p> <%= 'Location - ' + listing.location + ' |' + ' Price/Night - £' + listing.price + ' |' + ' Guests - ' + listing.maxPeople %> </p>
-        </li>
-        <br>
+        </div>
+      </div>
+      <div class="col-sm-2">
       </div>
     </div>
 
-  </div>
-  <div class="col-sm-2">
-  </div>
-</div>
-      <% }) %>
-    </ul>
   </body>
 </html>
