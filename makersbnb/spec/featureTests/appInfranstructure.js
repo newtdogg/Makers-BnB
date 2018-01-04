@@ -5,6 +5,7 @@ var Browser = require('zombie');
 var assert = require('assert');
 var models = require('../../models')
 
+
   describe('home page', function() {
     // databaseCleaner.clean('airbnb_test');
 
@@ -18,7 +19,7 @@ var models = require('../../models')
     describe('pretesting', function(done) {
 
       before(function(done) {
-        models.Listing.truncate();
+        //models.Listing.truncate();
         browser.visit('/', done);
       })
 
@@ -37,8 +38,8 @@ var models = require('../../models')
         browser.fill('#price', '50')
         browser.fill('#guests', '3')
         browser.pressButton('Submit', function(){
-           assert.equal(browser.text('li'), 'Location - London | Price/Night - £50 | Guests - 3');
-          done();
+           assert.equal(browser.text('#list'), 'Location - London | Price/Night - £50 | Guests - 3');
+           done();
         })
       });
 
