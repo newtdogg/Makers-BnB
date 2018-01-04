@@ -1,8 +1,13 @@
-<form method="post" action="/users/new">
+<form id="signUpForm" method="post" action="/users/new">
+  <label for="name">Name: </label>
   <input id="name" type="text" name="name" placeholder="Trevor">
+  <label for="username">Username: </label>
   <input id="username" type="text" name="username" placeholder="cool_dad">
-  <input id="email" type="email" name="email" placeholder="123@456.com">
+  <label for="email">Email: </label>
+  <input id="email" type="text" name="email" placeholder="123@456.com">
+  <label for="password">Password: </label>
   <input id="password" type="password" name="password" placeholder="*********">
+  <label for="password_confirmation">Confirm password: </label>
   <input id="password_confirmation" type="password" name="password_confirmation" placeholder="*********">
-  <input type="submit" value="Submit">
+  <input type="submit" name="Submit">
 </form>
