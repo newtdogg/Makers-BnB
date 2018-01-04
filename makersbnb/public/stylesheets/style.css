@@ -4,6 +4,10 @@
   border-width: 0px;
 }
 
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: grey;
+}
+
 .navbar {
   height: 100px;
   padding-top: 25px;
@@ -26,6 +30,12 @@
   color: #565656;
 }
 
+.listings {
+  list-style: none;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  color: #565656;
+}
+
 body {
       position: relative;
   }
@@ -44,6 +54,6 @@ body {
   #section3 {
     padding-top:50px;
     height:500px;
-    color: #fff;
+    color: black;
     background-color: white;
   }
