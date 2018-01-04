@@ -4,14 +4,20 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
 
     return queryInterface.createTable('UserListings', {
+      id:{
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       userid:{
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      linkid:{
+      listingid:{
         allowNull: false,
         type: Sequelize.INTEGER
-      },
+      }
     });
   },
 
