@@ -1,6 +1,7 @@
 var express = require('express');
 var models = require('../models');
 var router = express.Router();
+var bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -15,8 +16,13 @@ router.post('/new', function(req, res, next) {
   email = req.body.email
   console.log(name, username, password, email)
 
-  models.User.create({name: name, username: username, password: password, email: email})
-  res.redirect('/')
+  bcrypt.hash(password, 8, function(err, hash){
+    var user = new models.User({name: name, username: username, password: hash, email: email})
+    user.save().then(function(newUser){
+      console.log("Successfully added to db")
+      res.redirect('/')
+    })
+  })
 });
 
 module.exports = router;
