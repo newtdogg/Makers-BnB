@@ -38,7 +38,7 @@ var models = require('../../models')
         browser.fill('#price', '£50')
         browser.fill('#guests', '3')
         return browser.pressButton('Submit').then(function(){
-        assert.equal(browser.text('#list'), 'Location - London | Price/Night - £50 | Guests - 3');
+        assert.equal(browser.text('#list'), 'Location - London Price/Night - £50 Guests - 3');
        })
       });
 

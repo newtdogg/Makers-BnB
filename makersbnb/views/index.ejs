@@ -42,7 +42,7 @@
             <h1>Listings</h1>
             <% listings.forEach(function(listing) { %>
               <div class="col-sm-6 listings">
-                <ul>
+                <ul id="list">
                   <li> <h4><%= " Location - " + listing.location %></li></h4>
                   <li> <h4><%= " Price/Night - £" + listing.price %></li></h4>
                   <li> <h4><%= " Guests - " + listing.maxPeople %></li></h4>
