@@ -9,6 +9,7 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
+
     return queryInterface.createTable('Listings', {
       id:{
         allowNull: false,
@@ -26,6 +27,7 @@ module.exports = {
         type: Sequelize.INTEGER
       }
     });
+
   },
 
   down: function(queryInterface, Sequelize) {
