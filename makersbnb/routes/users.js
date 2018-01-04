@@ -5,6 +5,15 @@ var bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  models.User.findOne({where: {username: "admin"}}).then(function(user){
+    bcrypt.compare("admin", user.password, function(err, res){
+      if(res){
+        console.log("Matching", res)
+      } else {
+        console.log("Not matching")
+      }
+    })
+  })
   res.send('respond with a resource');
 });
 

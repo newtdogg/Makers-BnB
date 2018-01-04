@@ -4,6 +4,7 @@ var app = require('../../app');
 var Browser = require('zombie');
 var assert = require('assert');
 var models = require('../../models')
+var bcrypt = require('bcrypt');
 
 describe('userSignUp', function(done) {
 
@@ -29,6 +30,22 @@ describe('userSignUp', function(done) {
     return browser.pressButton('Submit').then(function(){
       models.User.findAll().then(function(items){
         assert.equal(items.pop().username, 'cool_dad')
+      })
+    })
+  })
+
+  it('Should hash the password on user creation', function(){
+    return browser.visit('/signup').then(function(){
+      signUpForm('admin', 'admin', 'admin@admin.com', 'admin', 'admin');
+      browser.pressButton('Submit').then(function(){
+        models.User.findAll().then(function(users){
+          console.log(users)
+          var user = users.pop();
+          bcrypt.compare("admin", user.password, function(err, res){
+            console.log(err)
+            assert.equal(res, true);
+          })
+        })
       })
     })
   })
