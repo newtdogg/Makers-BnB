@@ -33,3 +33,6 @@ node_modules/.bin/sequelize db:migrate --url 'postgres://127.0.0.1/airbnb_test'
 
 browser.fill('#id01', 'London')
 browser.fill('input[name="Price/Night:"]', '£40.00')
+
+creating a new migration file:::
+node_modules/.bin/sequelize migration:create --name="name"
