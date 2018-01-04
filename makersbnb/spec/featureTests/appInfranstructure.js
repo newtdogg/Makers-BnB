@@ -45,4 +45,27 @@ var models = require('../../models')
 
     });
 
+    describe('userSignUp', function(done) {
+
+      function signUpForm() {
+        browser.fill('#name', 'Trevor')
+        browser.fill('#username', 'cool_dad')
+        browser.fill('#email', 'cool_dad@yahoo.com')
+        browser.fill('#password', '123456')
+        browser.fill('#password_confirmation', '123456')
+        browser.pressButton('Submit')
+      }
+
+      before(function(done) {
+        models.User.truncate();
+        browser.visit('/signup', done);
+      })
+
+      it('a user can submit information to sign up', function(){
+        signUpForm()
+        models.User.findAll().then(function(items){
+          assert.equal(items.pop().username, 'cool_dad')
+        })
+      })
+    })
   });
