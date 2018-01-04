@@ -61,6 +61,10 @@ var models = require('../../models')
         browser.visit('/signup', done);
       })
 
+      it('should have a form to fill in with details', function() {
+        assert.equal(browser.text('#signUpForm'), 'Name: Username: Email: Password: Confirm password: ');
+      });
+
       it('a user can submit information to sign up', function(){
         signUpForm()
         models.User.findAll().then(function(items){
