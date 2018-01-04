@@ -4,7 +4,10 @@ var router = express.Router();
 
 router.post('/new', function(req, res, next) {
   location = req.body.location
-  price = parseFloat(req.body.price).toFixed(2)
+  function currencyChek(cost) {
+    return (cost[0] === '£' ? cost.slice(1, cost.length) : cost)
+  }
+  price = parseFloat(currencyChek(req.body.price)).toFixed(2)
   guests = parseInt(req.body.guests)
   models.Listing.create({location: location, price: price, maxPeople: guests})
   res.redirect('/')

@@ -19,7 +19,7 @@ var models = require('../../models')
     describe('pretesting', function(done) {
 
       before(function(done) {
-        //models.Listing.truncate();
+        models.Listing.truncate();
         browser.visit('/', done);
       })
 
@@ -35,7 +35,7 @@ var models = require('../../models')
         // PressButton returns promise, to test asynch functions we must force
         // wait using done(), which prevents chain of execution continuing.
         browser.fill('#loco', 'London')
-        browser.fill('#price', '50')
+        browser.fill('#price', '£50')
         browser.fill('#guests', '3')
         browser.pressButton('Submit', function(){
            assert.equal(browser.text('#list'), 'Location - London | Price/Night - £50 | Guests - 3');
