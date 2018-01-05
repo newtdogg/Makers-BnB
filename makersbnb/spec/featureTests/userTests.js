@@ -24,7 +24,7 @@ describe('userSignUp', function(done) {
   beforeEach(function(done) {
     models.User.truncate();
     browser.visit('/signup', done)
-  })
+  });
 
   // afterEach(function(done) {
   //   models.User.truncate();
@@ -36,8 +36,8 @@ describe('userSignUp', function(done) {
     browser.visit('/signup', function(){
       assert.equal(browser.text('#signUpForm'), 'Name: Username: Email: Password: Confirm password:');
       done();
-    })
-  })
+    });
+  });
 
   it('User should be able to submit information to signup', function(done){
     signUpForm('james', 'cool_dad', 'test@cool.com', 'badpw', 'badpw');
@@ -46,8 +46,8 @@ describe('userSignUp', function(done) {
         assert.equal(user.username, 'cool_dad');
         done();
       });
-    })
-  })
+    });
+  });
 
   it('Should hash the password on user creation', function(done){
     signUpForm('admin', 'admin', 'admin@admin.com', 'admin', 'admin');
@@ -66,10 +66,10 @@ describe('userSignUp', function(done) {
       signUpForm('dave', 'cool_dave', 'cooldave@456.com', '12345', '54321')
        browser.pressButton('Submit').then(function(){
         models.User.findAll().then(function(items){
-          assert.equal(items.length, 1)
-        })
-      })
-    })
+          assert.equal(items.length, 1);
+        });
+      });
+    });
   })
 
   it('cannot signup with a previously used email address', function(done){
