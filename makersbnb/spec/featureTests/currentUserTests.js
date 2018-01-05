@@ -21,6 +21,11 @@ describe('userSignUp', function(done) {
     browser.fill('#password_confirmation', confirm)
   }
 
+  function logInForm(username, password) {
+    browser.fill('#username', username)
+    browser.fill('#password', password)
+  }
+
   beforeEach(function(done) {
     models.User.truncate();
     browser.visit('/signup', done)
@@ -41,6 +46,22 @@ describe('userSignUp', function(done) {
       browser.clickLink('#signout').then(function(){
         assert.equal(browser.text('#welcome_message'), 'Not signed in')
         done();
+      })
+    })
+  })
+
+  it("should be able to log in as a user", function(done) {
+    signUpForm('Terry', 'cooler_dad', 'test@cooler.com', 'badpw', 'badpw');
+    browser.pressButton('Submit').then(function(){
+      browser.clickLink('#signout').then(function(){
+        browser.visit('/signin').then(function(){
+          logInForm('cooler_dad', 'badpw')
+          browser.pressButton('#SignIn').then(function(){
+            console.log(userSession.currentUser)
+            assert.equal(browser.text('#welcome_message'), 'Signed in as cooler_dad')
+            done();
+          })
+        })
       })
     })
   })

@@ -42,6 +42,11 @@
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
+.signup ul{
+  position: absolute;
+  left: 50%;
+}
+
 body {
       position: relative;
   }

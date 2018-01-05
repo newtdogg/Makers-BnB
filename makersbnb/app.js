@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var listings = require('./routes/listings');
 var userregister = require('./routes/userregister')
 var signout = require('./routes/signout')
+var signin = require('./routes/signin')
 var userMaterials = require('./lib/currentUser.js')
 
 userSession = new UserSession
@@ -33,6 +34,7 @@ app.use('/users', users);
 app.use('/listing', listings);
 app.use('/signup', userregister);
 app.use('/signout', signout);
+app.use('/signin', signin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
