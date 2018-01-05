@@ -11,7 +11,7 @@ var listings = require('./routes/listings');
 var userregister = require('./routes/userregister')
 var userMaterials = require('./lib/currentUser.js')
 
-userNow = new User
+userSession = new UserSession 
 
 var app = express();
 

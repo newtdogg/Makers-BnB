@@ -1,6 +1,6 @@
 
 
-User = function() {
+UserSession = function() {
   this.currentUser = null
 
   this.setCurrentUser = function(new_user) {
