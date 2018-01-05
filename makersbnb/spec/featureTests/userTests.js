@@ -86,4 +86,20 @@ describe('userSignUp', function(done) {
       });
     });
   })
+
+  it('cannot signup with an exitsing username', function(done) {
+    signUpForm('dan', 'TheDaninator', '123@456.com', '999', '999');
+    browser.pressButton('Submit').then(function(){
+      browser.visit('/signup').then(function(){
+        signUpForm('dan', 'TheDaninator', '123@456.com', '999', '999');
+        browser.pressButton('Submit').then(function(){
+          models.User.findAll({where: {username: 'TheDaninator'}}).then(function(items){
+            assert.equal(items.length, 1);
+            done();
+          });
+        });
+      });
+    });
+  });
+
 })
