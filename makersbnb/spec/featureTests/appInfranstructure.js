@@ -31,16 +31,16 @@ var models = require('../../models')
         assert.equal(browser.text('form label'), 'Location: Price/Night: Guests:');
       });
 
-      it('should allow the user to upload a property', function() {
-        // PressButton returns promise, to test asynch functions we must force
-        // wait using done(), which prevents chain of execution continuing.
-        browser.fill('#loco', 'London')
-        browser.fill('#price', '£50')
-        browser.fill('#guests', '3')
-        return browser.pressButton('Submit').then(function(){
-        assert.equal(browser.text('#list'), 'Location - London Price/Night - £50 Guests - 3');
-       })
-      });
+      // it('should allow the user to upload a property', function() {
+      //   // PressButton returns promise, to test asynch functions we must force
+      //   // wait using done(), which prevents chain of execution continuing.
+      //   browser.fill('#loco', 'London')
+      //   browser.fill('#price', '£50')
+      //   browser.fill('#guests', '3')
+      //   return browser.pressButton('Submit').then(function(){
+      //   assert.equal(browser.text('#list'), 'Location - London Price/Night - £50 Guests - 3');
+      //  })
+      // });
 
     });
   });

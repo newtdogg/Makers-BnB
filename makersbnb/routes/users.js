@@ -23,19 +23,29 @@ router.post('/new', function(req, res, next) {
   username = req.body.username
   password = req.body.password
   email = req.body.email
-  console.log(name, username, password, email)
+  passwordConfirmation = req.body.password_confirmation
 
-  bcrypt.hash(password, 8, function(err, hash){
-    var user = new models.User({name: name, username: username, password: hash, email: email})
-    user.save().then(function(newUser){
-      console.log("Successfully added to db")
-      userNow.setCurrentUser(user)
-      res.redirect('/')
-    }).catch(function (err) {
-      console.log(err.message)
-      res.redirect('/signup')
+  if(password === passwordConfirmation){
+    bcrypt.hash(password, 8, function(err, hash){
+      var user = new models.User({name: name, username: username, password: hash, email: email})
+      user.save().then(function(newUser){
+        console.log("Successfully added to db")
+        userNow.setCurrentUser(user)
+        res.redirect('/')
+      }).catch(function (err) {
+        console.log(err.message)
+        res.redirect('/signup')
+      })
     })
-  })
+  } else {
+
+    res.redirect('/signup')
+
+  }
+
+  // console.log(name, username, password, email)
+
+
 });
 
 module.exports = router;

@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   models.Listing.findAll().then(function(items) {
-    console.log(userNow.currentUser)
+    // console.log(userNow.currentUser)
     res.render('index', { title: 'JTLN', listings: items });
   })
 });

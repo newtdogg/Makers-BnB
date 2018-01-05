@@ -61,15 +61,14 @@ describe('userSignUp', function(done) {
     });
   })
 
-  xit('cannot sign up with an invalid password', function(){
-      return browser.visit('/signup').then(function(){
+  it('cannot sign up with an invalid password', function(done){
       signUpForm('dave', 'cool_dave', 'cooldave@456.com', '12345', '54321')
-       browser.pressButton('Submit').then(function(){
-        models.User.findAll().then(function(items){
-          assert.equal(items.length, 1);
+      browser.pressButton('Submit').then(function(){
+        models.User.findOne({where: {username: "cool_dave"}}).then(function(item){
+          assert.equal(item, null);
+          done();
         });
       });
-    });
   })
 
   it('cannot signup with a previously used email address', function(done){
