@@ -1,5 +1,6 @@
-MakersBnB
+# MakersBnB
 
+### User Stories
 ```
 As a tourist,
 So that I can decide where I want to go,
@@ -30,11 +31,18 @@ So that I can plan in advance,
 I would like to book a listing
 ```
 
-Used for migrating into test database
+
+### Various Instructions
+
+
+***Used for migrating into test database***
 node_modules/.bin/sequelize db:migrate --url 'postgres://127.0.0.1/airbnb_test'
 
-browser.fill('#id01', 'London')
-browser.fill('input[name="Price/Night:"]', '£40.00')
-
-creating a new migration file:::
+***Creating a new migration file:***
 node_modules/.bin/sequelize migration:create --name="name"
+
+***Different syntax for zombie testing***
+1. Filling forms
+```browser.fill('#id01', 'London')```
+**or**
+```browser.fill('input[name="Price/Night:"]', '£40.00')```
