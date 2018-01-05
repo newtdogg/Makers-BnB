@@ -22,11 +22,11 @@
       <div class="col-sm-4" align="right">
         <ul class="nav navbar-nav">
           <% if (userName === "FLAG") { %>
-            <li><a href="">Not signed in</a></li>
+            <li><a id="welcome_message" href="">Not signed in</a></li>
             <li><a href="">Sign In</a></li>
           <% } else { %>
             <li><a id="welcome_message" href="">Signed in as <%= userName %></a></li>
-            <li><a href="">Sign Out</a></li></a></li>
+            <li><a id="signout" href="/signout">Sign Out</a></li></a></li>
           <% } %>
         </ul>
       </div>

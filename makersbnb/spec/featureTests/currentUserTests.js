@@ -34,4 +34,14 @@ describe('userSignUp', function(done) {
       done();
     })
   })
+
+  it("should be able to log out as a user", function(done) {
+    signUpForm('Terry', 'cooler_dad', 'test@cooler.com', 'badpw', 'badpw');
+    browser.pressButton('Submit').then(function(){
+      browser.clickLink('#signout').then(function(){
+        assert.equal(browser.text('#welcome_message'), 'Not signed in')
+        done();
+      })
+    })
+  })
 })
