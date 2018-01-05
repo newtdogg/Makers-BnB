@@ -30,6 +30,9 @@ router.post('/new', function(req, res, next) {
     user.save().then(function(newUser){
       console.log("Successfully added to db")
       res.redirect('/')
+    }).catch(function (err) {
+      console.log(err.message)
+      res.redirect('/signup')
     })
   })
 });

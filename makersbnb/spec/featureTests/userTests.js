@@ -16,7 +16,12 @@ describe('userSignUp', function(done) {
     browser.fill('#password_confirmation', confirm)
   }
 
-  before(function(done) {
+  beforeEach(function(done) {
+    models.User.truncate();
+    browser.visit('/signup', done);
+  })
+
+  afterEach(function(done) {
     models.User.truncate();
     browser.visit('/signup', done);
   })
@@ -49,7 +54,7 @@ describe('userSignUp', function(done) {
     })
   })
 
-  it('a user cannot sign up with an invalid password', function(){
+  xit('a user cannot sign up with an invalid password', function(){
       return browser.visit('/signup').then(function(){
       signUpForm('dave', 'cool_dave', 'cooldave@456.com', '12345', '54321')
        browser.pressButton('Submit').then(function(){
@@ -62,12 +67,17 @@ describe('userSignUp', function(done) {
 
   it('a user cannot signup with a previously used email address', function(){
       return browser.visit('/signup').then(function(){
-      signUpForm('ted', 'cool_ted', '123@456.com', '12345', '12345')
-      browser.pressButton('Submit').then(function(){
-        models.User.findAll().then(function(items){
-          assert.equal(items.length, 1)
+        signUpForm('dan', 'TheDaninator', '123@456.com', '999', '999')
+        browser.pressButton('Submit').then(function(){
+          browser.visit('/signup').then(function() {
+            signUpForm('ted', 'cool_ted', '123@456.com', '12345', '12345')
+            browser.pressButton('Submit').then(function(){
+              models.User.findAll().then(function(items){
+                assert.equal(items.length, 1)
+              })
+            })
+          })
         })
       })
     })
-  })
 })
