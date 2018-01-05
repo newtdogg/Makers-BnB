@@ -5,6 +5,11 @@ var Browser = require('zombie');
 var assert = require('assert');
 var models = require('../../models')
 var bcrypt = require('bcrypt');
+var chai = require("chai");
+var chaiAsPromised = require("chai-as-promised");
+
+chai.use(chaiAsPromised);
+chai.should();
 
 describe('userSignUp', function(done) {
 
@@ -18,43 +23,45 @@ describe('userSignUp', function(done) {
 
   beforeEach(function(done) {
     models.User.truncate();
-    browser.visit('/signup', done);
+    browser.visit('/signup', done)
   })
 
-  afterEach(function(done) {
-    models.User.truncate();
-    browser.visit('/signup', done);
-  })
+  // afterEach(function(done) {
+  //   models.User.truncate();
+  //   browser.visit('/signup', done);
+  // })
+  //
 
-  it('should have a form to fill in with details', function() {
-    assert.equal(browser.text('#signUpForm'), 'Name: Username: Email: Password: Confirm password:');
-  });
-
-  it('a user can submit information to sign up', function(){
-    signUpForm('james', 'cool_dad', '123@456.com', '12345', '12345')
-    return browser.pressButton('Submit').then(function(){
-      models.User.findAll().then(function(items){
-        assert.equal(items.pop().username, 'cool_dad')
-      })
+  it('should have a form to fill in with details', function(done) {
+    browser.visit('/signup', function(){
+      assert.equal(browser.text('#signUpForm'), 'Name: Username: Email: Password: Confirm password:');
+      done();
     })
   })
 
-  it('Should hash the password on user creation', function(){
-    return browser.visit('/signup').then(function(){
-      signUpForm('admin', 'admin', 'admin@admin.com', 'admin', 'admin');
-      browser.pressButton('Submit').then(function(){
-        // Below does not work when using findOne???
-        models.User.findAll().then(function(users){
-          user = users.pop();
-          bcrypt.compare("admin", user.password, function(err, res){
-            assert.equal(res, true);
-          })
-        })
-      })
+  it('User should be able to submit information to signup', function(done){
+    signUpForm('james', 'cool_dad', 'test@cool.com', 'badpw', 'badpw');
+    browser.pressButton('Submit').then(function(){
+      models.User.findOne({where: {username: "cool_dad"}}).then(function(user){
+        assert.equal(user.username, 'cool_dad');
+        done();
+      });
     })
   })
 
-  xit('a user cannot sign up with an invalid password', function(){
+  it('Should hash the password on user creation', function(done){
+    signUpForm('admin', 'admin', 'admin@admin.com', 'admin', 'admin');
+    browser.pressButton('Submit').then(function(){
+      models.User.findOne({where: {username: 'admin'}}).then(function(user){
+        bcrypt.compare('admin', user.password, function(err, res){
+          assert.equal(res, true);
+          done()
+        });
+      });
+    });
+  })
+
+  xit('cannot sign up with an invalid password', function(){
       return browser.visit('/signup').then(function(){
       signUpForm('dave', 'cool_dave', 'cooldave@456.com', '12345', '54321')
        browser.pressButton('Submit').then(function(){
@@ -65,19 +72,18 @@ describe('userSignUp', function(done) {
     })
   })
 
-  it('a user cannot signup with a previously used email address', function(){
-      return browser.visit('/signup').then(function(){
-        signUpForm('dan', 'TheDaninator', '123@456.com', '999', '999')
+  it('cannot signup with a previously used email address', function(done){
+    signUpForm('dan', 'TheDaninator', '123@456.com', '999', '999');
+    browser.pressButton('Submit').then(function(){
+      browser.visit('/signup').then(function(){
+        signUpForm('dan', 'meme', '123@456.com', '999', '999');
         browser.pressButton('Submit').then(function(){
-          browser.visit('/signup').then(function() {
-            signUpForm('ted', 'cool_ted', '123@456.com', '12345', '12345')
-            browser.pressButton('Submit').then(function(){
-              models.User.findAll().then(function(items){
-                assert.equal(items.length, 1)
-              })
-            })
-          })
-        })
-      })
-    })
+          models.User.findAll({where: {email: '123@456.com'}}).then(function(items){
+            assert.equal(items.length, 1);
+            done();
+          });
+        });
+      });
+    });
+  })
 })
