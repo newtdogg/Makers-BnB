@@ -1,4 +1,4 @@
-MakersBnB - Test
+MakersBnB
 
 ```
 As a tourist,
