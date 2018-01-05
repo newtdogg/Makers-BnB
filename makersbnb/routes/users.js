@@ -29,7 +29,7 @@ router.post('/new', function(req, res, next) {
     var user = new models.User({name: name, username: username, password: hash, email: email})
     user.save().then(function(newUser){
       console.log("Successfully added to db")
-      userNow.setCurrentUser(user)
+      userSession.setCurrentUser(user)
       res.redirect('/')
     }).catch(function (err) {
       console.log(err.message)

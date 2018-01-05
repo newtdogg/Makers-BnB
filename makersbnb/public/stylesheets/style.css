@@ -36,6 +36,12 @@
   color: #565656;
 }
 
+.welcome_message {
+  color: white;
+  font-size: 12px;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
 body {
       position: relative;
   }
