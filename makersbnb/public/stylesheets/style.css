@@ -48,7 +48,18 @@
 }
 
 .carousel {
-  
+
+}
+
+.search {
+  margin: 40px;
+  padding-top: 150px;
+
+}
+
+.searchLocation input{
+  width: 200px;
+  height: 50px;
 }
 
 body {

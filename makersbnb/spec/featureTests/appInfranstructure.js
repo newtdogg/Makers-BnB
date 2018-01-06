@@ -34,7 +34,7 @@ var models = require('../../models')
       });
 
       it('should have a form to fill in with details', function() {
-        assert.equal(browser.text('form label'), 'Location: Price/Night: Guests:');
+        assert.equal(browser.text('#page-section3'), 'Become a host Location: Price/Night: Guests:');
       });
 
       it('should allow the user to upload a property', function(done) {
@@ -42,7 +42,7 @@ var models = require('../../models')
         // wait using done(), which prevents chain of execution continuing.
         fillInLocation('London', '£50', '3')
         browser.pressButton('Submit').then(function(){
-          assert.equal(browser.text('#list'), 'Location - London Price/Night - £50 Guests - 3');
+          assert.equal(browser.text('#listings'), 'Location - London Price/Night - £50 Guests - 3');
           done()
         })
       });
