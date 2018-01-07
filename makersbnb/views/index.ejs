@@ -83,7 +83,7 @@
             </div>
           </div>
           <div id="page-section1" class="container-fluid search">
-            <form id="searchLocation" class="searchLocation">
+            <form id="searchLocation" class="searchLocation" action="/searchLocation" method="post">
               <label for="searchLocation:">Enter your destination: </label>
               <input id="searchLoco" type="search" name="searchLocation">
               <input type="submit" name="Search!">
@@ -91,16 +91,30 @@
           </div>
           <div id="page-section2" class="container-fluid">
             <div class="row">
-            <h1>Listings</h1>
-            <% listings.forEach(function(listing) { %>
-              <div class="col-sm-6 listings">
-                <ul id="listings">
-                  <li> <h4 id="listingLoco"><%= " Location - " + listing.location %></li></h4>
-                  <li> <h4 id="listingPrice"><%= " Price/Night - £" + listing.price %></li></h4>
-                  <li> <h4 id="listingGuests"><%= " Guests - " + listing.maxPeople %></li></h4>
-                </ul>
-              </div>
-              <% }) %>
+            <h1> Listings </h1>
+              <% if (userSession.search != null) { %>
+                <% listings.forEach(function(listing) { %>
+                  <% if (listing.location === userSession.search) { %>
+                    <div class="col-sm-6 listings">
+                      <ul id="listings">
+                        <li> <h4 id="listingLoco"><%= " Location - " + listing.location %></li></h4>
+                        <li> <h4 id="listingPrice"><%= " Price/Night - £" + listing.price %></li></h4>
+                        <li> <h4 id="listingGuests"><%= " Guests - " + listing.maxPeople %></li></h4>
+                      </ul>
+                    </div>
+                  <% } %>
+                <% }) %>
+              <% } else { %>
+                <% listings.forEach(function(listing) { %>
+                  <div class="col-sm-6 listings">
+                    <ul id="listings">
+                      <li> <h4 id="listingLoco"><%= " Location - " + listing.location %></li></h4>
+                      <li> <h4 id="listingPrice"><%= " Price/Night - £" + listing.price %></li></h4>
+                      <li> <h4 id="listingGuests"><%= " Guests - " + listing.maxPeople %></li></h4>
+                    </ul>
+                  </div>
+                <% }) %>
+              <% } %>
             </div>
           </div>
           <div id="page-section3" class="container-fluid">
