@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="item">
-                  <img src="ny.jpg" alt="New York">
+                  <img src="capetown.jpg" alt="New York">
                 </div>
               </div>
 
@@ -84,9 +84,10 @@
           </div>
           <div id="page-section1" class="container-fluid search">
             <form id="searchLocation" class="searchLocation" action="/searchLocation" method="post">
-              <label for="searchLocation:">Enter your destination: </label>
-              <input id="searchLoco" type="search" name="searchLocation">
-              <input type="submit" name="Search!">
+              <input id="searchLoco" class="searchTerm" type="search" name="searchLocation" placeholder="Enter your destination:">
+              <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+              </button>
             </form>
           </div>
           <div id="page-section2" class="container-fluid listing-container">

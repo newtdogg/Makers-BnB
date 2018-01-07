@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 .navbar-inverse .navbar-nav>li>a {
   color: white;
@@ -67,13 +68,53 @@
 }
 
 .search {
-  margin: 40px;
-  padding-top: 150px;
+  margin: 100px;
+  padding-top: 250px;
+  padding-left: 30px;
 }
 
-.searchLocation input{
-  width: 200px;
-  height: 50px;
+.searchLocation {
+  width: 100%;
+  position: relative;
+}
+
+.searchTerm {
+  float: left;
+  width: 90%;
+  border: 3px solid #00B4CC;
+  padding: 20px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: absolute;
+  float: left;
+  right: 40px;
+  width: 50px;
+  height: 46px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 body {
