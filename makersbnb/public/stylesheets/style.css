@@ -6,6 +6,11 @@
 
 .navbar-inverse .navbar-nav>li>a:hover {
     color: grey;
+    background-color: #76dbd1;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+  background-color: #76dbd1;
 }
 
 .navbar {
@@ -19,6 +24,11 @@
 .hometitle{
   font-weight: bold;
   color: white;
+}
+
+.welcome {
+  margin-top:12vmin;
+  margin-bottom:12vmin;
 }
 
 .welcomecomment {
