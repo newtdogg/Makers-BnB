@@ -92,7 +92,17 @@
           <div id="page-section2" class="container-fluid">
             <div class="row">
             <h1> Listings </h1>
-              <% if (userSession.search != null) { %>
+              <% if (userSession.search === null || userSession.search === "") { %>
+                <% listings.forEach(function(listing) { %>
+                    <div class="col-sm-6 listings">
+                      <ul id="listings">
+                        <li> <h4 id="listingLoco"><%= " Location - " + listing.location %></li></h4>
+                        <li> <h4 id="listingPrice"><%= " Price/Night - £" + listing.price %></li></h4>
+                        <li> <h4 id="listingGuests"><%= " Guests - " + listing.maxPeople %></li></h4>
+                      </ul>
+                    </div>
+                <% }) %>
+              <% } else { %>
                 <% listings.forEach(function(listing) { %>
                   <% if (listing.location === userSession.search) { %>
                     <div class="col-sm-6 listings">
@@ -103,16 +113,6 @@
                       </ul>
                     </div>
                   <% } %>
-                <% }) %>
-              <% } else { %>
-                <% listings.forEach(function(listing) { %>
-                  <div class="col-sm-6 listings">
-                    <ul id="listings">
-                      <li> <h4 id="listingLoco"><%= " Location - " + listing.location %></li></h4>
-                      <li> <h4 id="listingPrice"><%= " Price/Night - £" + listing.price %></li></h4>
-                      <li> <h4 id="listingGuests"><%= " Guests - " + listing.maxPeople %></li></h4>
-                    </ul>
-                  </div>
                 <% }) %>
               <% } %>
             </div>
