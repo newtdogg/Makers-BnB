@@ -40,6 +40,11 @@
   color: #565656;
 }
 
+.listing-container {
+  margin: 40px;
+  padding-top: 150px;
+}
+
 .listings {
   list-style: none;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
@@ -64,7 +69,6 @@
 .search {
   margin: 40px;
   padding-top: 150px;
-
 }
 
 .searchLocation input{

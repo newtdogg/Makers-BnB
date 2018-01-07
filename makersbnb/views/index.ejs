@@ -89,7 +89,7 @@
               <input type="submit" name="Search!">
             </form>
           </div>
-          <div id="page-section2" class="container-fluid">
+          <div id="page-section2" class="container-fluid listing-container">
             <div class="row">
             <h1> Listings </h1>
               <% if (userSession.search != null) { %>
@@ -115,6 +115,11 @@
                   </div>
                 <% }) %>
               <% } %>
+            </div>
+            <div class="">
+              <form action="/searchLocation/reset" method="post">
+                <input type="submit" name="Show All Listings" value="Show All Listings">
+              </form>
             </div>
           </div>
           <div id="page-section3" class="container-fluid">
