@@ -10,11 +10,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userid:{
+      UserId:{
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      listingid:{
+      ListingId:{
         allowNull: false,
         type: Sequelize.INTEGER
       }

@@ -27,9 +27,9 @@ describe('userSignUp', function(done) {
     models.User.findOne({where: {username: "admin"}}).then(function(admin){
       admin.getListings().then(function(listings){
         assert.equal(listings.length, 1);
-        done()
-      })
-    })
+        done();
+      });
+    });
 
   });
 

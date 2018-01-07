@@ -2,11 +2,17 @@
 module.exports = function(sequelize, DataTypes){
 
   var UserListing = sequelize.define('UserListing', {
-    userid: {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    UserId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    listingid: {
+    ListingId: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
