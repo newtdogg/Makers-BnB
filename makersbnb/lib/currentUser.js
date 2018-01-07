@@ -11,4 +11,7 @@ UserSession = function() {
     this.currentUser = null
   };
 
+  this.hasCurrentUser = function(){
+    return !(this.currentUser === null)
+  }
 }

@@ -4,6 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log(userSession.hasCurrentUser())
   var sessionUsername = null
   userSession.currentUser === null ? sessionUsername = "FLAG" : sessionUsername = userSession.currentUser.username
   models.Listing.findAll().then(function(items) {
