@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="item">
-                  <img src="ny.jpg" alt="New York">
+                  <img src="capetown.jpg" alt="New York">
                 </div>
               </div>
 
@@ -84,12 +84,13 @@
           </div>
           <div id="page-section1" class="container-fluid search">
             <form id="searchLocation" class="searchLocation" action="/searchLocation" method="post">
-              <label for="searchLocation:">Enter your destination: </label>
-              <input id="searchLoco" type="search" name="searchLocation">
-              <input type="submit" name="Search!">
+              <input id="searchLoco" class="searchTerm" type="search" name="searchLocation" placeholder="Enter your destination:">
+              <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+              </button>
             </form>
           </div>
-          <div id="page-section2" class="container-fluid">
+          <div id="page-section2" class="container-fluid listing-container">
             <div class="row">
             <h1> Listings </h1>
               <% if (userSession.search === null || userSession.search === "") { %>
@@ -116,19 +117,27 @@
                 <% }) %>
               <% } %>
             </div>
+            <div class="">
+              <form action="/searchLocation/reset" method="post">
+                <input type="submit" name="Show All Listings" value="Show All Listings">
+              </form>
+            </div>
           </div>
           <div id="page-section3" class="container-fluid">
             <h1>Become a host</h1>
             <form method="post" action="/listing/new" id="PropertyForm">
-              <label for="Location:">Location: </label>
-              <input id="loco" type='text' label="Location:" name='location' placeholder="London">
-              <br>
-              <label for="Price/Night:">Price/Night: </label>
-              <input id="price" type='text' label="Price/Night:" name='price' placeholder="£80">
-              <br>
-              <label for="Guests:">Guests: </label>
-              <input id="guests" type='text' label="Guests:" name='guests' placeholder="2">
-              <br>
+              <div>
+                <label for="Location:">Location: </label>
+                <input id="loco" class="hostForm" type='text' label="Location:" name='location' placeholder="London">
+              </div>
+              <div>
+                <label for="Price/Night:">Price/Night: </label>
+                <input id="price" class="hostForm" type='text' label="Price/Night:" name='price' placeholder="£80">
+              </div>
+              
+                <label for="Guests:">Guests: </label>
+                <input id="guests" class="hostForm" type='text' label="Guests:" name='guests' placeholder="2">
+              </div>
 
               <input type="submit" name="Submit">
             </form>
