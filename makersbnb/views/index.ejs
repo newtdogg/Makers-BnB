@@ -126,15 +126,18 @@
           <div id="page-section3" class="container-fluid">
             <h1>Become a host</h1>
             <form method="post" action="/listing/new" id="PropertyForm">
-              <label for="Location:">Location: </label>
-              <input id="loco" type='text' label="Location:" name='location' placeholder="London">
-              <br>
-              <label for="Price/Night:">Price/Night: </label>
-              <input id="price" type='text' label="Price/Night:" name='price' placeholder="£80">
-              <br>
-              <label for="Guests:">Guests: </label>
-              <input id="guests" type='text' label="Guests:" name='guests' placeholder="2">
-              <br>
+              <div>
+                <label for="Location:">Location: </label>
+                <input id="loco" class="hostForm" type='text' label="Location:" name='location' placeholder="London">
+              </div>
+              <div>
+                <label for="Price/Night:">Price/Night: </label>
+                <input id="price" class="hostForm" type='text' label="Price/Night:" name='price' placeholder="£80">
+              </div>
+              
+                <label for="Guests:">Guests: </label>
+                <input id="guests" class="hostForm" type='text' label="Guests:" name='guests' placeholder="2">
+              </div>
 
               <input type="submit" name="Submit">
             </form>

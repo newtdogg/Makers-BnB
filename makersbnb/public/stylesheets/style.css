@@ -117,6 +117,18 @@
   transform: translate(-50%, -50%);
 }
 
+.hostForm {
+  margin: 10px;
+  float: right;
+  width: 80%;
+  border: 3px solid #00B4CC;
+  padding: 20px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
 body {
       position: relative;
   }
