@@ -33,7 +33,7 @@ chai.should();
         browser.pressButton('Submit').then(function(){
           browser.fill('#searchLoco', 'London')
           browser.pressButton('Submit').then(function(){
-            assert.equal(browser.text('#listingLoco'), 'London')
+            assert.equal(browser.text('#listingLoco'), 'Location - London')
             done();
           })
         })

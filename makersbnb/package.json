@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha spec/featureTests"
+    "test": "mocha spec/featureTests && mocha spec/unitTests"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
