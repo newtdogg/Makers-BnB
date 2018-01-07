@@ -50,7 +50,7 @@ module.exports = function(sequelize, DataTypes){
     }
   });
   User.associate = function(models){
-  User.belongsToMany(models.Listing, {through: models.UserListing})
+    User.belongsToMany(models.Listing, {through: models.UserListing})
   }
   return User;
 };

@@ -11,5 +11,8 @@ module.exports = function(sequelize, DataTypes){
     price: DataTypes.FLOAT,
     maxPeople: DataTypes.INTEGER,
   });
+  Listing.associate = function(models){
+    Listing.belongsTo(models.User)
+  };
   return Listing;
 };
