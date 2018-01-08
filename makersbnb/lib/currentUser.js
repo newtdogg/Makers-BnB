@@ -12,14 +12,11 @@ UserSession = function() {
     this.currentUser = null
   };
 
-<<<<<<< HEAD
   this.currentUserSearch = function(search) {
     this.search = search
   }
 
-=======
   this.hasCurrentUser = function(){
     return !(this.currentUser === null)
   }
->>>>>>> dbWork2
 }
