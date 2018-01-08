@@ -83,7 +83,7 @@
             </div>
           </div>
           <div id="page-section1" class="container-fluid search">
-            <form id="searchLocation" class="searchLocation" action="/searchLocation" method="post">
+            <form id="searchLocation" class="searchLocation" action="/search" method="post">
               <input id="searchLoco" class="searchTerm" type="search" name="searchLocation" placeholder="Enter your destination:">
               <button type="submit" class="searchButton">
                 <i class="fa fa-search"></i>
@@ -93,7 +93,10 @@
           <div id="page-section2" class="container-fluid listing-container">
             <div class="row">
             <h1> Listings </h1>
+<<<<<<< HEAD
               <% if (userSession.search === null || userSession.search === "") { %>
+=======
+>>>>>>> sorting
                 <% listings.forEach(function(listing) { %>
                     <div class="col-sm-6 listings">
                       <ul id="listings">
@@ -103,6 +106,7 @@
                       </ul>
                     </div>
                 <% }) %>
+<<<<<<< HEAD
               <% } else { %>
                 <% listings.forEach(function(listing) { %>
                   <% if (listing.location === userSession.search) { %>
@@ -116,6 +120,8 @@
                   <% } %>
                 <% }) %>
               <% } %>
+=======
+>>>>>>> sorting
             </div>
             <div class="">
               <form action="/searchLocation/reset" method="post">
@@ -134,7 +140,7 @@
                 <label for="Price/Night:">Price/Night: </label>
                 <input id="price" class="hostForm" type='text' label="Price/Night:" name='price' placeholder="£80">
               </div>
-              
+
                 <label for="Guests:">Guests: </label>
                 <input id="guests" class="hostForm" type='text' label="Guests:" name='guests' placeholder="2">
               </div>
