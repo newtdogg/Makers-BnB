@@ -1,4 +1,6 @@
-# MakersBnB
+# EZSleep
+
+EZSleep was a website designed to emulate airBnB, written with a JavaScript front end and back end. 
 
 ### User Stories
 ```
